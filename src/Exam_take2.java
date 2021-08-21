@@ -56,6 +56,36 @@ public class Exam_take2 extends Canvas {
         graphics.setColor(Color.green);
         graphics.drawLine(x_double_dash,y2, line_x2, line_y2);
 
+        System.out.println("Enter translation value, 0 for no translation");
+        int x_trans = Integer.parseInt(sc.nextLine());
+        int y_trans = Integer.parseInt(sc.nextLine());
+
+        x1 = x1 + x_trans;
+        y1 = y1 + y_trans;
+        x2 = x2 + x_trans;
+        y2 = y2 + y_trans;
+
+        // Draw translated rectangle
+        graphics.setColor(Color.BLACK);
+        graphics.drawRect(x1, y1, width, height);
+
+        // Before entering the rectangle
+        m = (line_y2 - line_y1)/(line_x2 - line_x1);
+        c = line_y1 - (int)(line_x1 * m);
+        x_dash = (int)((y1 - c)/m);
+        graphics.setColor(Color.green);
+        graphics.drawLine(line_x1,line_y1,x_dash,y1);
+
+        // Inside the rectangle
+        x_double_dash = (int)((y2 - c)/m);
+
+        graphics.setColor(Color.RED);
+        graphics.drawLine(x_dash,y1,x_double_dash,y2);
+
+        // After exiting the rectangle
+        graphics.setColor(Color.green);
+        graphics.drawLine(x_double_dash,y2, line_x2, line_y2);
+
 
 
     }
